@@ -12,7 +12,7 @@ namespace Hospital
         public Doctor(int id, string fullName, int departmentId, string specialty)
         {
             if (fullName == null || fullName == "")
-                throw new ArgumentException("ФИО врача не может быть пустым");
+                throw new ArgumentException("ФИО  врача не может быть пустым");
 
             if (specialty == null || specialty == "")
                 throw new ArgumentException("Специальность не может быть пустой");
