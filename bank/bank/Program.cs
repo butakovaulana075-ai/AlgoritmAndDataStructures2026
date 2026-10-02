@@ -1,4 +1,5 @@
-﻿using System;
+﻿using bank;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,7 +33,31 @@ namespace ConsoleApp1
             {
                 Console.WriteLine(e.Message);
             }
+            InterestEarningAccount interest = new InterestEarningAccount("Ulyana", 1000);
+            interest.PerformMonthAndTransactions();
 
+            Console.WriteLine(interest.GetAccountHistory());
+
+            LineOfCreditAccount lineOfCredit = new LineOfCreditAccount("Ulyana", 10, 1000m);
+            lineOfCredit.MakeWithdrawal(500m, DateTime.UtcNow, "credit");
+
+            GiftCardAccount giftcart = new GiftCardAccount("Ulyana", 1000m, 5000m);
+
+            List<BankAccount> accounts = new List<BankAccount>();
+            accounts.Add(account1);
+            accounts.Add(interest);
+            accounts.Add(lineOfCredit);
+            accounts.Add(giftcart);
+
+            foreach (var  account in accounts)
+            {
+                Console.WriteLine(account);   //Console.WriteLine(account.ToString());
+
+                account.PerformMonthAndTransactions();
+                Console.WriteLine(interest.GetAccountHistory());
+            }
+            lineOfCredit.MakeWithdrawal(600m, DateTime.UtcNow, "credit");
+            Console.WriteLine(lineOfCredit.GetAccountHistory());
         }
     }
 }
